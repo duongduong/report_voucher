@@ -1,0 +1,3 @@
+# report_voucher
+Modify name of menuitem Sale...
+Create report in menu customer payment, using qweb
