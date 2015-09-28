@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_account_voucher_document_inherit" inherit_id="sale.report_saleorder_document">
+    <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']" position="replace">
+        <div class="row mt32 mb32" id="info">
+            <div class="col-xs-3" t-if="o.date_order">
+                <strong>Date:</strong>
+                <p t-field="o.date_order"/>
+            </div>
+            <div class="col-xs-3" t-if="o.user_id.name">
+                <strong>Salesman:</strong>
+                <p t-field="o.user_id.name"></p>
+            </div>
+            <div class="col-xs-3" t-if="o.client_order_ref">
+                <strong>Customer Reference:</strong>
+                <p t-field="o.client_order_ref"/>
+            </div>
+            <div class="col-xs-3" t-if="o_payment_term">
+                <strong>Payment Term:</strong>
+                <p t-field="o.payment_term"/>
+            </div>
+        </div>
+
+    </xpath>
+
+    <xpath expr="//div[@class='page']/table[@class='table table-condensed']/thead/tr" position="replace">
+        <tr>
+            <th>Description</th>
+            <th>Taxsss</th>
+            <th class="text-right">Quantity</th>
+            <th class="text-right">Unit Price</th>
+            <th group="sale.group_discount_per_so_line">Disc.(%)</th>
+            <th class="text-right">Price</th>
+            <!--<th class="text_right">Allocation</th>-->
+        </tr>
+    </xpath>
+
+</template>
+</data>
+</openerp>

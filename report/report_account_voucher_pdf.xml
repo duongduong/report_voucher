@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_account_voucher_template_document">
+    <t t-call="report.external_layout">
+        <div class="page">
+            <div class="oe_structure"/>
+                <table class="table-condensed">
+                    <thead>
+                        <tr style="border:1px solid black">
+                            <th>Partner</th>
+                            <th class="text-right">Account</th>
+                            <th class="text-right">Date</th>
+                            <th class="text-right">Original Amount</th>
+                            <th class="text-right">Allocation</th>
+                        </tr>
+                    </thead>
+                    <tbody class="voucher_tbody">
+                        <tr t-foreach="o.line_ids" t-as="l">
+                            <td><span t-field="l.partner_id"/></td>
+
+                            <td class="text-right" groups="base.group_no_one">
+                                <span t-field="l.account_id"/></td>
+
+                            <td class="text-right">
+                                <span t-field="l.date_original"/></td>
+
+                            <td class="text-right"><span t-field="l.amount_original"/></td>
+
+                            <td class="text-right">
+                                <span t-field="l.amount"/>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <table class="table table-condensed">
+                            <tr class="border-black">
+                                <td><strong>Difference Amount:</strong></td>
+                                <td class="text-right">
+                                    <span t-field="o.writeoff_amount" t-field-options='{"widget": "monetary", "currency_field": "currency_id"}'/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!--<div class="row">-->
+                        <!--<p><b>CONFIRM &amp; ACCEPTED BY</b></p><br/><br/><br/>-->
+                        <!--<p>____________________</p>-->
+                <!--</div>-->
+            <div class="oe_structure"/>
+        </div>
+    </t>
+</template>
+<template id="report_voucher_template">
+    <t t-call="report.html_container">
+        <t t-foreach="doc_ids" t-as="doc_id">
+            <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'pj_test.report_account_voucher_template_document')"/>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>

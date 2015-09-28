@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding ="UTF-8"?>
+<openerp>
+    <data>
+        <!--<menuitem id="menu_account_customer" name="Customers Tem"-->
+            <!--parent="menu_finance_receivables" action="base.action_partner_customer_form" sequence="100"/>-->
+
+        <!--<menuitem id="base.menu_product" name="Product" parent="base.menu_base_partner" sequence="9"/>-->
+        <record model="ir.ui.menu" id="product.menu_products">
+            <field name="name">Products Variantsss Template</field>
+        </record>
+
+        <record model="ir.ui.menu" id="product.menu_product_template_action">
+            <field name="name">Products Template</field>
+        </record>
+
+
+
+        <!--<record model="ir.ui.menu" id="account.menu_account_customer">-->
+            <!--<field name="name">Customer Tem</field>-->
+        <!--</record>-->
+
+        <record model="ir.ui.menu" id="base.menu_partner_form">
+            <field name="name">Partner</field>
+        </record>
+
+        <record id="base.action_partner_form" model="ir.actions.act_window">
+             <field name="name">Partner</field>
+        </record>
+
+        <record model="ir.ui.view" id="pj_view_order_form">
+            <field name="name">sale_order_form_inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath
+                        expr="//form[@string='Sales Order']/sheet/group/group/field[@name='currency_id']" position="attributes">
+                        <attribute name="invisible">0</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data>
+</openerp>
